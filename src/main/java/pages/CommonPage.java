@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import steps.CommonSteps;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class CommonPage {
     public CommonPage() {
@@ -23,5 +24,6 @@ public class CommonPage {
                 return;
             }
         }
+        throw new NoSuchElementException("не нашел элемент "+hrefEl);
     }
 }
