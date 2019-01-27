@@ -30,8 +30,8 @@ public class CommonSteps {
         driver.quit();
     }
     @Когда("^нажал на кнопку (.*?)$")
-    public void buttonStep(String button){
-        new CommonPage().buttonSt();
+    public void buttonStep(String href){
+        new CommonPage().hrefClick(href);
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")
