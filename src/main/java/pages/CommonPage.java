@@ -1,19 +1,29 @@
 package pages;
 
-import Help.ElementTitle;
-import Help.Page;
-import Help.PageEntry;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import steps.CommonSteps;
 
-@PageEntry(title = "Главная страница")
-public class CommonPage extends Page {
+import java.util.List;
+import java.util.NoSuchElementException;
+
+public class CommonPage {
     public CommonPage() {
-        PageFactory.initElements(Help.PageFactory.getDriver(), this);
+        PageFactory.initElements(CommonSteps.getDriver(), this);
     }
 
-    @FindBy(xpath = "//a[text()='Видео']")
-    @ElementTitle("Видео")
-    WebElement logo;
+    @FindBy(xpath = "//a")
+    List<WebElement> href;
+
+
+    public void hrefClick(String hrefEl) {
+        for (WebElement ele : href) {
+            if(ele.getText().equals(hrefEl)){
+                ele.click();
+                return;
+            }
+        }
+        throw new NoSuchElementException("не нашел элемент "+hrefEl);
+    }
 }
